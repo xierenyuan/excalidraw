@@ -17,11 +17,19 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("/workbox/workbox-sw.js");
-
-workbox.setConfig({
-  modulePathPrefix: "/workbox/",
-});
+if (process.env.NODE_ENV === "development") {
+  importScripts(
+    "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js",
+  );
+  workbox.setConfig({
+    debug: false,
+  });
+} else {
+  importScripts("/workbox/workbox-sw.js");
+  workbox.setConfig({
+    modulePathPrefix: "/workbox/",
+  });
+}
 
 self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {

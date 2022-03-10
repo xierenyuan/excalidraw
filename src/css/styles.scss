@@ -119,11 +119,46 @@
 
     .buttonList {
       flex-wrap: wrap;
+      display: flex;
 
       label {
         margin-right: 0.25rem;
         font-size: 0.75rem;
         display: inline-block;
+
+        &.is-text {
+          height: 26px;
+          box-sizing: border-box;
+          font-size: 16px;
+        }
+
+        &.fz {
+          font-family: "FZSJ";
+        }
+
+        &.f5 {
+          font-family: "f5";
+        }
+
+        &.f6 {
+          font-family: "f6";
+        }
+
+        &.f7 {
+          font-family: "f7";
+        }
+
+        &.f8 {
+          font-family: "f8";
+        }
+
+        &.f9 {
+          font-family: "f9";
+        }
+
+        &.active {
+          color: #fff;
+        }
       }
 
       input[type="radio"],
@@ -245,6 +280,10 @@
         opacity: 1;
       }
     }
+  }
+
+  .buttonList.buttonListIcon.font-family {
+    width: 300px;
   }
 
   .App-top-bar {

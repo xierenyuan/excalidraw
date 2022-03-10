@@ -6,17 +6,27 @@ export const ButtonIconSelect = <T extends Object>({
   value,
   onChange,
   group,
+  className,
 }: {
-  options: { value: T; text: string; icon: JSX.Element; testId?: string }[];
+  options: {
+    value: T;
+    text: string;
+    icon?: JSX.Element;
+    testId?: string;
+    class?: string;
+  }[];
   value: T | null;
   onChange: (value: T) => void;
   group: string;
+  className?: string;
 }) => (
-  <div className="buttonList buttonListIcon">
+  <div className={clsx("buttonList buttonListIcon", className)}>
     {options.map((option) => (
       <label
         key={option.text}
-        className={clsx({ active: value === option.value })}
+        className={clsx(option.class, {
+          active: value === option.value,
+        })}
         title={option.text}
       >
         <input
@@ -26,7 +36,7 @@ export const ButtonIconSelect = <T extends Object>({
           checked={value === option.value}
           data-testid={option.testId}
         />
-        {option.icon}
+        {option.icon || option.text}
       </label>
     ))}
   </div>

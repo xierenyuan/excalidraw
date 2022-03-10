@@ -660,7 +660,8 @@ export const actionChangeFontFamily = register({
     const options: {
       value: FontFamilyValues;
       text: string;
-      icon: JSX.Element;
+      icon?: JSX.Element;
+      class?: string;
     }[] = [
       {
         value: FONT_FAMILY.Virgil,
@@ -677,12 +678,23 @@ export const actionChangeFontFamily = register({
         text: t("labels.code"),
         icon: <FontFamilyCodeIcon theme={appState.theme} />,
       },
+      {
+        value: FONT_FAMILY.FZSJ,
+        text: "方正手写",
+        class: "is-text fz",
+      },
+      {
+        value: FONT_FAMILY.f9,
+        text: "手写f9",
+        class: "is-text f9",
+      },
     ];
 
     return (
       <fieldset>
         <legend>{t("labels.fontFamily")}</legend>
         <ButtonIconSelect<FontFamilyValues | false>
+          className="font-family"
           group="font-family"
           options={options}
           value={getFormValue(
